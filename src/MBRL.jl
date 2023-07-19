@@ -31,7 +31,11 @@ using OneHotArrays
 export MBRLAgent, ReplayBuffer, AgentParameter, ModelParameter
 
 
+"""
+    MBRLAgent(model::ODERNNModel, environment::ContinuousEnvironment, agentParams::AgentParameter, modelParams::ModelParameter)
 
+Train a model-based reinforcement learning agent with the ODERNN model in a continuous environment.
+"""
 function MBRLAgent(model::ODERNNModel, environment::ContinuousEnvironment, agentParams::AgentParameter, modelParams::ModelParameter) 
 
     gym = pyimport("gymnasium")
@@ -255,6 +259,11 @@ function MBRLAgent(model::ODERNNModel, environment::ContinuousEnvironment, agent
 end
 
 
+"""
+    MBRLAgent(model::NODEModel, environment::ContinuousEnvironment, agentParams::AgentParameter, modelParams::ModelParameter)
+
+Train a model-based reinforcement learning agent with the NODE model in a continuous environment.
+"""
 function MBRLAgent(model::NODEModel, environment::ContinuousEnvironment, agentParams::AgentParameter, modelParams::ModelParameter) 
 
     gym = pyimport("gymnasium")
@@ -467,6 +476,11 @@ function MBRLAgent(model::NODEModel, environment::ContinuousEnvironment, agentPa
 end
 
 
+"""
+    MBRLAgent(model::NODEModel, environment::DiscreteEnvironment, agentParams::AgentParameter, modelParams::ModelParameter)
+
+Train a model-based reinforcement learning agent with the NODE model in a discrete environment.
+"""
 function MBRLAgent(model::NODEModel, environment::DiscreteEnvironment, agentParams::AgentParameter, modelParams::ModelParameter) 
 
     gym = pyimport("gymnasium")
@@ -670,6 +684,11 @@ function MBRLAgent(model::NODEModel, environment::DiscreteEnvironment, agentPara
 end
 
 
+"""
+    MBRLAgent(model::ODERNNModel, environment::DiscreteEnvironment, agentParams::AgentParameter, modelParams::ModelParameter)
+
+Train a model-based reinforcement learning agent with the ODERNN model in a discrete environment.
+"""
 function MBRLAgent(model::ODERNNModel, environment::DiscreteEnvironment, agentParams::AgentParameter, modelParams::ModelParameter) 
 
     gym = pyimport("gymnasium")

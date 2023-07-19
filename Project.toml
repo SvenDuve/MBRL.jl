@@ -3,6 +3,25 @@ uuid = "5b59a703-f9a9-4862-ac00-36bfaa260143"
 authors = ["Sven Duve <svenduve@gmail.com> and contributors"]
 version = "1.0.0-DEV"
 
+[deps]
+BSON = "fbb218c0-5317-5bc6-957e-2ee96dd4b1f0"
+Conda = "8f4d0f93-b110-5947-807f-2305c1781a2d"
+DDPG = "8ec6dd78-eb7a-4e52-aead-a0b68381319b"
+DQN = "deb474df-0289-44c2-842d-684d3ab7ddf3"
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+Flux = "587475ba-b771-5e3f-ad9e-33799f191a9c"
+MLUtils = "f1d291b0-491e-4a28-83b9-f70985020b54"
+NODEDynamics = "57723ca8-2715-4bf2-a8d0-05a37925b76f"
+ODERNNDynamics = "8bc7aede-b6b4-4d91-81c5-ce89a4bda3d5"
+OneHotArrays = "0b1bfda6-eb8a-41d2-88d8-f5af5cad476f"
+Parameters = "d96e819e-fc66-5662-9728-84c9c7592b0a"
+PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
+RLTypes = "caff8df6-c124-4ea5-aa40-27805766b7ca"
+Rewards = "ada35a54-ba6b-4adf-9b5b-9f5477ac8350"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
+UnPack = "3a884ed6-31ef-47d7-9d2a-63182c4928ed"
+
 [compat]
 julia = "1"
 

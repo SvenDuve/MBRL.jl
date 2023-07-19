@@ -18,9 +18,7 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - '1.0'
           - '1.9'
-          - 'nightly'
         os:
           - ubuntu-latest
         arch:
@@ -49,6 +47,12 @@ jobs:
         run: |
           julia --project=docs/ -e '
             using Pkg
+            Pkg.develop(url="https://github.com/SvenDuve/RLTypes.jl")
+            Pkg.develop(url="https://github.com/SvenDuve/Rewards.jl")
+            Pkg.develop(url="https://github.com/SvenDuve/NODEDynamics.jl")
+            Pkg.develop(url="https://github.com/SvenDuve/ODERNNDynamics.jl")
+            Pkg.develop(url="https://github.com/SvenDuve/DDPG.jl")
+            Pkg.develop(url="https://github.com/SvenDuve/DQN.jl")
             Pkg.develop(PackageSpec(path=pwd()))
             Pkg.instantiate()'
       - uses: julia-actions/julia-buildpkg@v1
