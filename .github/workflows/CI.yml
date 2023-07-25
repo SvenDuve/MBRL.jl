@@ -44,12 +44,12 @@ jobs:
       - uses: actions/checkout@v3
       - uses: julia-actions/setup-julia@v1
         with:
-          version: '1.9.2'
+          version: '1.9'
       - name: Configure doc environment
         run: |
           julia --project=docs/ -e '
             using Pkg
-            #Pkg.develop(url="https://github.com/SvenDuve/RLTypes.jl")
+            Pkg.develop(url="https://github.com/SvenDuve/RLTypes.jl")
             #Pkg.develop(url="https://github.com/SvenDuve/Rewards.jl")
             #Pkg.develop(url="https://github.com/SvenDuve/NODEDynamics.jl")
             #Pkg.develop(url="https://github.com/SvenDuve/ODERNNDynamics.jl")
