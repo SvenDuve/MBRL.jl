@@ -56,7 +56,8 @@ jobs:
             #Pkg.develop(url="https://github.com/SvenDuve/DDPG.jl")
             #Pkg.develop(url="https://github.com/SvenDuve/DQN.jl")
             Pkg.develop(PackageSpec(path=pwd()))
-            Pkg.instantiate()'
+            Pkg.instantiate()
+            println("done")'
       - uses: julia-actions/julia-buildpkg@v1
       - uses: julia-actions/julia-docdeploy@v1
         env:
