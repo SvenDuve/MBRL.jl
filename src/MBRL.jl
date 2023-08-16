@@ -99,10 +99,10 @@ function MBRLAgent(model::ODERNNModel, environment::ContinuousEnvironment, agent
         fθ = CombinedModel(model, decoder)
 
         if environment isa Pendulum
-            fθ = loadmodel!(fθ, BSON.load("./MBRL/pendulum_model.bson")[:mE][1].trained_model[end])
+            fθ = loadmodel!(fθ, BSON.load("./pendulum_model.bson")[:mE][1].trained_model[end])
             model_opt = Flux.setup(Flux.Optimise.Adam(modelParams.model_η), fθ)
         elseif environment isa LunarLanderContinuous
-            fθ = loadmodel!(fθ, BSON.load("./MBRL/lunarlander_model.bson")[:mE][1].trained_model[end])
+            fθ = loadmodel!(fθ, BSON.load("./lunarlander_model.bson")[:mE][1].trained_model[end])
             model_opt = Flux.setup(Flux.Optimise.Adam(modelParams.model_η), fθ)
         elseif environment isa BipedalWalker
             println("We are struggeling as you know.")
@@ -324,10 +324,10 @@ function MBRLAgent(model::NODEModel, environment::ContinuousEnvironment, agentPa
         fθ = NODE(envParams.state_size + envParams.action_size, modelParams.ode_size, envParams.state_size)
 
         if environment isa Pendulum
-            fθ = loadmodel!(fθ, BSON.load("./MBRL/pendulum_node_model.bson")[:mE].trained_model[end])
+            fθ = loadmodel!(fθ, BSON.load("./pendulum_node_model.bson")[:mE].trained_model[end])
             model_opt = Flux.setup(Flux.Optimise.Adam(modelParams.model_η), fθ)
         elseif environment isa LunarLanderContinuous
-            fθ = loadmodel!(fθ, BSON.load("./MBRL/lunarlander_node_model.bson")[:lunarlander_node_model].trained_model[end])
+            fθ = loadmodel!(fθ, BSON.load("./lunarlander_node_model.bson")[:lunarlander_node_model].trained_model[end])
             model_opt = Flux.setup(Flux.Optimise.Adam(modelParams.model_η), fθ)
         elseif environment isa BipedalWalker
             println("We are struggeling as you know.")
@@ -528,10 +528,10 @@ function MBRLAgent(model::NODEModel, environment::DiscreteEnvironment, agentPara
         println("Loading Model...")        
         fθ = NODE(envParams.state_size + envParams.action_size, modelParams.ode_size, envParams.state_size)
         if environment isa LunarLanderDiscrete
-            fθ = loadmodel!(fθ, BSON.load("./MBRL/lunarlanderdiscrete_node_model.bson")[:lunarlanderdiscrete_node_model].trained_model[end])
+            fθ = loadmodel!(fθ, BSON.load("./lunarlanderdiscrete_node_model.bson")[:lunarlanderdiscrete_node_model].trained_model[end])
             model_opt = Flux.setup(Flux.Optimise.Adam(modelParams.model_η), fθ)
         elseif environment isa Acrobot
-            fθ = loadmodel!(fθ, BSON.load("./MBRL/acrobot_node_model.bson")[:acrobot_node_model].trained_model[end])
+            fθ = loadmodel!(fθ, BSON.load("./acrobot_node_model.bson")[:acrobot_node_model].trained_model[end])
             model_opt = Flux.setup(Flux.Optimise.Adam(modelParams.model_η), fθ)
         else
             println("We are struggeling as you know.")
@@ -740,10 +740,10 @@ function MBRLAgent(model::ODERNNModel, environment::DiscreteEnvironment, agentPa
 
 
         if environment isa LunarLanderDiscrete
-            fθ = loadmodel!(fθ, BSON.load("./MBRL/lunarlanderdiscrete_odernn_model.bson")[:lunarlanderdiscrete_odernn_model][1].trained_model[end])
+            fθ = loadmodel!(fθ, BSON.load("./lunarlanderdiscrete_odernn_model.bson")[:lunarlanderdiscrete_odernn_model][1].trained_model[end])
             model_opt = Flux.setup(Flux.Optimise.Adam(modelParams.model_η), fθ)
         elseif environment isa Acrobot
-            fθ = loadmodel!(fθ, BSON.load("./MBRL/acrobot_odernn_model.bson")[:acrobot_odernn_model][1].trained_model[end])
+            fθ = loadmodel!(fθ, BSON.load("./acrobot_odernn_model.bson")[:acrobot_odernn_model][1].trained_model[end])
             model_opt = Flux.setup(Flux.Optimise.Adam(modelParams.model_η), fθ)
         else
             println("We are struggeling as you know.")
