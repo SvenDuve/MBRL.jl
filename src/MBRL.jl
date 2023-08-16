@@ -28,7 +28,7 @@ using OneHotArrays
 
 
 
-export MBRLAgent, ReplayBuffer, AgentParameter, ModelParameter
+export MBRLAgent, renderEnv, ReplayBuffer, AgentParameter, ModelParameter
 
 
 """
@@ -905,6 +905,51 @@ end
 # function checkComissar()
 #     return DyModelNODE.modelEnv("Pendulum-v1", DyModelNODE.HyperParameter())
 # end
+
+"""
+renderEnv(environment::ContinuousEnvironment, policy, seed=42)
+
+Renders a Model Based Reinforcement Learning Agent in a continuous environment.
+"""
+function renderEnv(environment::ContinuousEnvironment, policy, seed=42)
+
+    gym = pyimport("gymnasium")
+    
+    if environment isa LunarLanderContinuous
+        global env = gym.make("LunarLander-v2", continuous = true, render_mode="human")
+    elseif environment isa Pendulum
+        global env = gym.make("Pendulum-v1", render_mode="human")
+    else
+        println("Environment not supported")
+    end
+
+    s, info = env.reset(seed=seed)
+
+    R = []
+    notSolved = true
+
+    while notSolved
+        
+        a = DDPG.action(policy, s, false, EnvParameter(), AgentParameter()) 
+        # a = ϵ_greedy(policy, s, AgentParameter(), EnvParameter()) 
+        # a = argmax(policy(s)) - 1
+
+        s´, r, terminated, truncated, _ = env.step(a)
+
+        terminated | truncated ? t = true : t = false
+
+        append!(R, r)
+
+        # sleep(0.05)
+        s = s´
+        notSolved = !t
+    end
+
+    println("The agent has achieved return $(sum(R))")
+
+    env.close()
+
+end #renderEnv
 
 
 end # module RNNMBRL
