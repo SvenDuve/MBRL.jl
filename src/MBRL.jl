@@ -1,7 +1,6 @@
 module MBRL
 
 using DDPG: setActor, setCritic, action, train_step!, DDPG
-# using ODERNNDynamics: modelEnv, setReward, ODE_RNN, CombinedModel, train_step!, accuracy, ODERNNDynamics
 using ODERNNDynamics: ODE_RNN, CombinedModel#, train_step!, accuracy, ODERNNDynamics
 import ODERNNDynamics
 using NODEDynamics: NODE 
@@ -9,8 +8,6 @@ import NODEDynamics
 
 import DQN 
 
-# using DDPG: HyperParameter as ddpp_hp
-# using DyModelNODE: HyperParameter as dyModel_hp
 import Distributions
 using Statistics
 import StatsBase
@@ -900,11 +897,6 @@ function MBRLAgent(model::ODERNNModel, environment::DiscreteEnvironment, agentPa
     
 end
 
-#MBRLAgent("Pendulum-v1", AgentParameter(training_episodes=5), ModelParameter(training_episodes=2, trajectory=5, hidden=10))
-#MBRLAgent("Pendulum-v1", AgentParameter(training_episodes=100, train_start=5), ModelParameter(training_episodes=50, hidden=10))
-# function checkComissar()
-#     return DyModelNODE.modelEnv("Pendulum-v1", DyModelNODE.HyperParameter())
-# end
 
 """
 renderEnv(environment::ContinuousEnvironment, policy, seed=42)
@@ -954,14 +946,3 @@ end #renderEnv
 
 end # module RNNMBRL
 
-# This works for training the model
-# mbP = MBRLAgent(Pendulum(), AgentParameter(training_episodes=10, train_start=2), ModelParameter(hidden=10, retrain = 1000, train=true))
-# mbP = MBRLAgent(LunarLander(), AgentParameter(training_episodes=20, train_start=2), ModelParameter(hidden=10, retrain = 1000, train=true))
-# mbP = MBRLAgent(BipedalWalker(), AgentParameter(training_episodes=20, train_start=2), ModelParameter(hidden=10, retrain = 1000, train=true))
-
-# This works for using a pre-trained model
-# mbP = MBRLAgent(Pendulum(), AgentParameter(training_episodes=10, train_start=2), ModelParameter(hidden=10, retrain = 1000))
-# mbP = MBRLAgent(LunarLander(), AgentParameter(training_episodes=20, train_start=2), ModelParameter(hidden=10, retrain = 1000))
-# mbP = MBRLAgent(BipedalWalker(), AgentParameter(training_episodes=20, train_start=2), ModelParameter(hidden=10, retrain = 1000, train=true))
-
-# file naming: <environment>Models.bson
