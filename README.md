@@ -28,7 +28,7 @@ This module depends mainly on:
 
 In the Julia REPL, run
 
-´´´
+```
 using Pkg
 Pkg.add("Conda")
 Pkg.add("PyCall")
