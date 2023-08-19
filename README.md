@@ -38,7 +38,7 @@ Pkg.add(url="https://github.com/SvenDuve/RLTypes.jl")
 
 Then again within julia,
 
-```julia
+```
 using Conda
 using PyCall
 Conda.pip_interop(true)
@@ -51,7 +51,7 @@ Conda.pip("install", "git+https://github.com/SvenDuve/Gymnasium")
 
 Bring package into scope with
 
-```julia
+```
 using MBRL
 ```
 
@@ -60,7 +60,7 @@ using MBRL
 
 Once the above is installed, the following code can be used to train an agent:
 
-```julia
+```
 using MBRL
 using RLTypes
 MBRLAgent(NODEModel(), Pendulum(), AgentParameter(training_episodes=500), ModelParameter())
